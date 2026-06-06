@@ -1,17 +1,13 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from './pages/loginpage';
 
-test('OrangeHRM Login', async ({ page }) => {
+test('User login test', async ({ page }) => {
 
-  await page.goto('https://opensource-demo.orangehrmlive.com/');
+    const loginPage = new LoginPage(page);
 
-  await page.getByPlaceholder('Username').fill('Admin');
+    await loginPage.visit();
 
-  await page.getByPlaceholder('Password').fill('admin123');
+    await loginPage.loginUser('Admin', 'admin123');
 
-  await page.getByRole('button', { name: 'Login' }).click();
-
-  await expect(
-    page.getByRole('heading', { name: 'Dashboard' })
-  ).toBeVisible();
-
+    await expect(loginPage.dashboardText).toHaveText('Dashboard');
 });
