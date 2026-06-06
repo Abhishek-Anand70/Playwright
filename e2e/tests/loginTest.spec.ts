@@ -10,6 +10,8 @@ test('OrangeHRM Login', async ({ page }) => {
 
   await page.getByRole('button', { name: 'Login' }).click();
 
-  await expect(page).toHaveURL(/dashboard/);
+  await expect(
+    page.getByRole('heading', { name: 'Dashboard' })
+  ).toBeVisible();
 
 });
