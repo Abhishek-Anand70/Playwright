@@ -3,12 +3,24 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed --project=chromium",
+    "test:debug": "playwright test --debug --project=chromium",
+    "test:ui": "playwright test --ui",
+    "test:login": "playwright test e2e/tests/specs/login.spec.ts --project=chromium",
+    "typecheck": "tsc --noEmit",
+    "report": "playwright show-report --port 9324"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.60.0",
-    "@types/node": "^25.9.1"
+    "@types/node": "^25.9.1",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
   }
 }
